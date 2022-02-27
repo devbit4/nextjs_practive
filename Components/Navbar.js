@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
-import styles from "./Navbar.module.css";
 
 export default function Navbar() {
     const router = useRouter();
@@ -8,16 +7,26 @@ export default function Navbar() {
 
     return <nav>
         <Link href="/">
-            {/* Link는 오직 href를 위한 것 */}
-            {/* <a style={{ color: router.pathname === "/" ? "red" : "blue" }} className="hello">Home</a> */}
-            {/* <a className={router.pathname === "/" ? styles.active : null}>Home</a> */}
-            <a className={`${styles.link} ${router.pathname === "/" ? styles.active : null}`}>Home</a>
+            <a className={router.pathname === "/" ? "active" : ""}>Home</a>
         </Link>
         <Link href="/about">
-            {/* <a style={{ color: router.pathname === "/about" ? "red" : "blue" }}>About</a> */}
-            {/* <a className={router.pathname === "/about" ? styles.active : null}>About</a> */}
-            <a className={`${styles.link} ${router.pathname === "/about" ? styles.active : null}`}>About</a>
+            <a className={router.pathname === "about" ? "active" : ""}>About</a>
+        </Link>
+        <style jsx>{`
+        nav{
+            background-color:tomato;
 
-        </Link >
+        }
+        a{
+            text-decoration:none;
+        }
+        .active{
+            color:yellow;
+        }
+        `}</style>
+
+        {/* className생각하지 않아도 되고 import 하지 않아도 됨 */}
+
+
     </nav >
 }
